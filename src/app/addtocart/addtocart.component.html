@@ -1,0 +1,27 @@
+<!-- <p>add-to-cart works!</p>
+<p> Company name : {{companyName}}</p>
+<p> Selected product details : {{selProduct|json}}</p> -->
+<div class="container ">
+    <div class="row">
+        <div class="col-4 offset-4 bg-warning">
+            <div class="card bg-primary" style="width: 18rem;">
+                <img class="card-img-top" src={{product?.imageUrl}} alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{product?.productName}}</h5>
+                    <p class="card-text">Cost :{{product?.price}}</p>
+                    <p class="card-text">Quantity: {{product?.quantity}}</p>
+                    <input type="button" value="-" class="btn btn-success" (click)="modifyQuantity('dec')"
+                        [disabled]="quantitySelected<=1" />
+                    {{quantitySelected}}
+                    <input type="button" value="+" class="btn btn-success" (click)="modifyQuantity('inc')"
+                        [disabled]="product && quantitySelected>=product.quantity" />
+                    <div>
+                        <input type="button" value="Confirm" class="btn btn-success m-2"
+                            (click)="confirmEventHandler()" />
+                        <input type="button" value="Cancel" class="btn btn-danger" (click)="cancelEventHandler()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/card">Payment By Card</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/wallet">Payment By Wallet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/upi">Payment By UPI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/netbanking">Payment By NetBanking</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-8">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

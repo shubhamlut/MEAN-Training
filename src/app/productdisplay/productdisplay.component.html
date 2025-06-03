@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3" *ngFor="let product of productsArr;let i=index;">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src={{product.imageUrl}} alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.productName}}</h5>
+                    <p class="card-text">Cost :{{product.price | currency:'INR':false}}</p>
+                    <p class="card-text">Quantity: {{product.quantity}}</p>
+                    <input type="button" class="btn btn-primary" value="Add To Cart" (click)="addToCart(product)" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="button" (click)="changeCompanyName()" value="Change Company Name" />
+<div *ngIf="showAddToCart">
+    <add-to-cart [companyName]="companyName" [selProduct]="selectedProduct"
+        (sendDataFromAddToCartToPD)="sendDataFromAddToCartToPDEventHandler($event)"
+        (sendCancelEventFromAddToCartToPD)="sendCancelEventFromAddToCartToPDEventHandler();"></add-to-cart>
+</div>

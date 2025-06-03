@@ -1,0 +1,33 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-4 offset-4 bg-secondary">
+            <form #registerTemplateForm="ngForm" (ngSubmit)="submitEventHandler(registerTemplateForm.form.value)">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        #email="ngModel" name="txtEmail" ngModel required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+                    <div *ngIf="email.invalid && email.touched" class="alert alert-danger">
+                        <p *ngIf="email.errors?.['required']">Email is required</p>
+                        <p *ngIf="email.errors?.['pattern']">Email is Invalid</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" #password="ngModel"
+                        name="txtPassword" ngModel required minlength="8" appCheckPasswordPattern>
+                    <div>Error:{{password.errors | json}}</div>
+                    <div *ngIf="password.invalid && password.touched" class="alert alert-danger">
+                        <p *ngIf="password.errors?.['required']">Password is required</p>
+                        <p *ngIf="password.errors?.['passwordPattern']">Password is Invalid</p>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary"
+                    [disabled]="!registerTemplateForm.form.valid">Submit</button>
+            </form>
+            <div>{{registerTemplateForm.form.value | json}}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 offset-4">
+
+            <form [formGroup]="registerModelFormGroup">
+                <div class="mb-3 formGroup" [ngClass]="{
+                                'has-danger':emailId.invalid && (emailId.dirty || emailId.touched),
+                                        'has-success':(emailId.dirty || emailId.valid)
+                            }">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        formControlName="emailId">
+                    <div *ngIf="registerModelFormGroup.controls['emailId'].errors?.['required']">
+                        Required email
+                    </div>
+
+                    <div *ngIf="registerModelFormGroup.controls['emailId'].errors?.['pattern']">
+                        invalid email
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                    <div *ngIf="registerModelFormGroup.controls['password'].errors?.['required']">
+                        Required Password
+                    </div>
+
+                    <div *ngIf="registerModelFormGroup.controls['password'].errors?.['pattern']">
+                        Invalid Password
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <!-- <div>
+                Form Values = {{registerModelFormGroup.value | json}}
+                Form Status = {{registerModelFormGroup.status}}
+            </div> -->
+        </div>
+    </div>
+</div>

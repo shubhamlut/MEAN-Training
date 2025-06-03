@@ -1,0 +1,7 @@
+<p>twow-way-data-binding-example works!</p>
+<input type="text"  [value]="countryName" (input)="inputEventHandler($event)">
+
+<p>Hello {{countryName}}</p>
+
+<input type="text" [(ngModel)]="personName" name="txtPersonName">
+<p>Hello {{personName}}</p>
